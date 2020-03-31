@@ -1,6 +1,6 @@
 # EPE-desoft
 
-trabalho de despft, junção dos códigos. 
+trabalho de desoft, junção dos códigos. 
 
 
 fichas = 100
@@ -36,4 +36,15 @@ if dados == 2 or 3 or 12:
     
 else: 
     fichas -= aposta 
+    
+    
+
+#Twelve
+
+if dados == 12:
+    fichas += aposta*30
+    print("ganhou a aposta")
+    
+else:
+    fichas -= aposta
 
