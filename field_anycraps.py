@@ -1,5 +1,3 @@
-# EPE-desoft
-
 trabalho de despft, junção dos códigos. 
 
 
@@ -36,4 +34,3 @@ if dados == 2 or 3 or 12:
     
 else: 
     fichas -= aposta 
-
