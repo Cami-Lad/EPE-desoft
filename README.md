@@ -1,2 +1,4 @@
 # EPE-desoft
-trabalho de despft, junção dos códigos. 
+trabalho de desoft, junção dos códigos. 
+
+fichas = 100
