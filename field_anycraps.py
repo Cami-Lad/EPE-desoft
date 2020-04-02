@@ -1,4 +1,4 @@
-trabalho de despft, junção dos códigos. 
+#trabalho de despft, junção dos códigos. 
 
 
 fichas = 100
