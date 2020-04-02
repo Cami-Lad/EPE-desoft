@@ -10,27 +10,30 @@ while (fichas!=0):
     
     valor_point= 0
     
-    print (fichas)
+    print ("fichas:{}".format(fichas))
     print (rodada)
     
     jogar= input('Você deseja apostar ou sair do jogo ? ')
+    if jogar != 'sair' and jogar != 'apostar':
+      print('Por favor, entre uma resposta válida')    
     if jogar == 'sair':
        fichas -= fichas  
     elif jogar == 'apostar':
-        tipo_aposta=input('Escolha uma aposta: Pass_line_bet, Field, Anycraps, ou Twelve ')
+        tipo_aposta=input('Escolha uma aposta (Pass_line_bet, Field, Anycraps, ou Twelve): ')
         
         if tipo_aposta == 'Pass_line_bet' :
             aposta= int(input('Quanto você deseja apostar?'))
             if dados == 7 or dados ==  11:
-                print (dados)
+                print ('dados:{}'.format(dados))
                 print ('Você ganhou a aposta!')
                 fichas += aposta 
             if dados == 2 or dados == 3 or dados == 12:
-                print (dados)
+                print ('dados:{}'.format(dados))
                 print ('Você perdeu a aposta')
                 fichas -= aposta
-            if dados == 4 or dados == 5 or dados == 6 or dados == 8 or dados == 10:
-                valor_point == dados 
+            if dados == 4 or dados == 5 or dados == 6 or dados == 8 or dados == 9 or dados == 10:
+                valor_point == dados
+                print('dados:{}'.format(dados))
                 rodada= 'point'
                 
                 while (rodada == 'point'):
@@ -43,7 +46,7 @@ while (fichas!=0):
                         fichas -= aposta
                         print ("Você perdeu a aposta")
                         rodada= 'Fase:Come out'
-                    elif dt == point:
+                    elif dt == dados:
                         rodada= 'Fase:Come out'
                         fichas += aposta
                         print ('Você ganhou!')
