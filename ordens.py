@@ -23,15 +23,17 @@ while (fichas>0):
         
         if tipo_aposta == 'Pass_line_bet' :
             aposta= int(input('Quanto você deseja apostar?'))
-            if dados == 7 or dados ==  11:
+            if aposta > fichas:
+                print('você não tem essa quantidade de fichas.')
+            elif dados == 7 or dados ==  11:
                 print ('dados:{}'.format(dados))
                 print ('Você ganhou a aposta!')
                 fichas += aposta 
-            if dados == 2 or dados == 3 or dados == 12:
+            elif dados == 2 or dados == 3 or dados == 12:
                 print ('dados:{}'.format(dados))
                 print ('Você perdeu a aposta...')
                 fichas -= aposta
-            if dados == 4 or dados == 5 or dados == 6 or dados == 8 or dados == 9 or dados == 10:
+            elif dados == 4 or dados == 5 or dados == 6 or dados == 8 or dados == 9 or dados == 10:
                 valor_point == dados
                 print('dados:{}'.format(dados))
                 rodada= 'Fase: Point'
@@ -57,11 +59,13 @@ while (fichas>0):
 
         if tipo_aposta == 'Field':
             aposta= int(input('Quanto você deseja apostar?'))
-            if dados == 5 or dados == 6 or dados == 7 or dados == 8 :
+            if aposta > fichas:
+                print('você não tem essa quantidade de fichas.')
+            elif dados == 5 or dados == 6 or dados == 7 or dados == 8 :
                 print (dados)
                 fichas -= aposta
                 print ("Você perdeu a aposta...")
-            if dados == 3 or dados == 4 or dados == 9 or dados == 10 or dados == 11:
+            elif dados == 3 or dados == 4 or dados == 9 or dados == 10 or dados == 11:
                 print (dados)
                 fichas += fichas 
                 print ('Você ganhou a aposta!')
@@ -78,11 +82,12 @@ while (fichas>0):
 
         if tipo_aposta == 'Anycraps':
             aposta= int(input('Quanto você deseja apostar?'))
-            if dados == 2 or dados == 3 or dados == 12:
+            if aposta > fichas:
+                print('você não tem essa quantidade de fichas.')
+            elif dados == 2 or dados == 3 or dados == 12:
                 print (dados)
                 fichas += aposta*7
                 print ("Ganhou a aposta")
-    
             else:
                 print (dados) 
                 fichas -= aposta
@@ -90,11 +95,12 @@ while (fichas>0):
 
         if tipo_aposta == 'Twelve':
             aposta= int(input('Quanto você deseja apostar?'))
-            if dados == 12:
+            if aposta > fichas:
+                print('você não tem essa quantidade de fichas.')
+            elif dados == 12:
                 print (dados)
                 fichas += aposta*30
                 print("ganhou a aposta")
-    
             else:
                 print (dados)
                 fichas -= aposta
