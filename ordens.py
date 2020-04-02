@@ -1,13 +1,18 @@
 from random import randint
 
 fichas = 100
-rodada= 'Come out'
+rodada= 'Fase:Come out '
 while (fichas!=0):
-    point= 0
+    
     dado1=(randint(1,6))
     dado2=(randint(1,6))
     dados= dado1 + dado2
+    
+    valor_point= 0
+    
     print (fichas)
+    print (rodada)
+    
     jogar= input('Você deseja apostar ou sair do jogo ? ')
     if jogar == 'sair':
        fichas -= fichas  
@@ -17,63 +22,80 @@ while (fichas!=0):
         if tipo_aposta == 'Pass_line_bet' :
             aposta= int(input('Quanto você deseja apostar?'))
             if dados == 7 or dados ==  11:
+                print (dados)
+                print ('Você ganhou a aposta!')
                 fichas += aposta 
             if dados == 2 or dados == 3 or dados == 12:
+                print (dados)
+                print ('Você perdeu a aposta')
                 fichas -= aposta
             if dados == 4 or dados == 5 or dados == 6 or dados == 8 or dados == 10:
-                point == dados 
+                valor_point == dados 
                 rodada= 'point'
                 
                 while (rodada == 'point'):
+                    print (rodada)
                     d1=(randint(1,6))
                     d2=(randint(1,6))
                     dt= d1+ d2
                     print (dt)
                     if dt == 7:
                         fichas -= aposta
-                        print ("Você perdeu a aposta") 
-                    if dt != point:
-                        print ('Tente novamente')
+                        print ("Você perdeu a aposta")
+                        rodada= 'Fase:Come out'
                     elif dt == point:
-                        rodada= 'Come Out'
+                        rodada= 'Fase:Come out'
+                        fichas += aposta
+                        print ('Você ganhou!')
+                    else:
+                        print ('Tente novamente')
                      
 
 
         if tipo_aposta == 'Field':
             aposta= int(input('Quanto você deseja apostar?'))
-            if dados == 5 or 6 or 7 or 8 :
+            if dados == 5 or dados == 6 or dados == 7 or dados == 8 :
+                print (dados)
                 fichas -= aposta
                 print ("Você perdeu a aposta")
-            if dados == 3 or 4 or 9 or 10 or 11:
+            if dados == 3 or dados == 4 or dados == 9 or dados == 10 or dados == 11:
+                print (dados)
                 fichas = fichas 
                 print ("Acabou a rodada")
     
             elif dados == 2:
+                print (dados)
                 fichas += aposta*2 
                 print ("Você ganhou 2X a aposta")
     
-            else:
+            elif dados == 12:
+                print (dados)
                 fichas += aposta*3
                 print("Você ganhou 3X a aposta")
 
         if tipo_aposta == 'Anycraps':
             aposta= int(input('Quanto você deseja apostar?'))
-            if dados == 2 or 3 or 12:
+            if dados == 2 or dados == 3 or dados == 12:
+                print (dados)
                 fichas += aposta*7
                 print ("Ganhou a aposta")
     
-            else: 
+            else:
+                print (dados) 
                 fichas -= aposta
                 print ("Você perdeu a aposta") 
 
         if tipo_aposta == 'Twelve':
             aposta= int(input('Quanto você deseja apostar?'))
             if dados == 12:
+                print (dados)
                 fichas += aposta*30
                 print("ganhou a aposta")
     
             else:
+                print (dados)
                 fichas -= aposta
+                print ("Você perdeu a aposta")
 
 print ("Até a próxima!")
 
