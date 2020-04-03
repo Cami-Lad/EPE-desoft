@@ -33,7 +33,7 @@ while (fichas>0):
     print ("fichas:{}".format(fichas))
     print (rodada)
     
-    jogar= input('Você deseja apostar ou sair do jogo? (apostar/sair) ')
+    jogar= input('Você deseja apostar ou sair do jogo? (apostar/sair):')
     
     if jogar == 'sair':
        fichas -= fichas  
@@ -52,6 +52,7 @@ while (fichas>0):
                    print('você perdeu a aposta Field...')
 
                    fichas += aposta_Field*resultadoF
+                   print ("fichas:{}".format(fichas))
     
         if 'Anycraps' in tipo_aposta:
             aposta_Anycaps = int(input('Quanto você deseja apostar em Anycraps?'))
@@ -65,6 +66,7 @@ while (fichas>0):
                  print('você perdeu a aposta Anycraps...')
 
                  fichas += aposta_Anycaps*resultadoA
+                 print ("fichas:{}".format(fichas))
 
         if 'Twelve' in tipo_aposta:
             aposta_Twelve = int(input('Quanto você deseja apostar em Twelve?'))
@@ -77,40 +79,85 @@ while (fichas>0):
                 else:
                     print('você perdeu a aposta Twelve...')
 
-                    fichas += aposta_Twelve*resultadoT
+                fichas += aposta_Twelve*resultadoT
+                print ("fichas:{}".format(fichas))
 
         if 'Pass_line_bet' in tipo_aposta:
             aposta_Pass_line_bet= int(input('Quanto você deseja apostar em Pass_line_bet?'))
             if aposta_Pass_line_bet > fichas:
                 print('você não tem essa quantidade de fichas.')
-            elif dados == 7 or dados ==  11:
-                print ('dados:{}'.format(dados))
-                print ('Você ganhou a aposta!')
-                fichas += aposta 
-            elif dados == 2 or dados == 3 or dados == 12:
-                print ('dados:{}'.format(dados))
-                print ('Você perdeu a aposta...')
-                fichas -= aposta
-            elif dados == 4 or dados == 5 or dados == 6 or dados == 8 or dados == 9 or dados == 10:
-                print('dados:{}'.format(dados))
-                rodada= 'Fase: Point'
-                
-                while (rodada == 'Fase: Point'):
-                    print (rodada)
-                    d1=(randint(1,6))
-                    d2=(randint(1,6))
-                    dt= d1+ d2
-                    print('dados:{}'.format(dt))
-                    if dt == 7:
-                        fichas -= aposta
-                        print ("Você perdeu a aposta...")
-                        rodada= 'Fase:Come out'
-                    elif dt == dados:
-                        rodada= 'Fase:Come out'
-                        fichas += aposta
-                        print ('Você ganhou a aposta!')
-                    else:
-                        print ('Tente novamente.')
+            else:
+                if dados == 7 or dados ==  11:
+                    print ('dados:{}'.format(dados))
+                    print ('Você ganhou a aposta Pass_line_bet!')
+                    fichas += aposta 
+                elif dados == 2 or dados == 3 or dados == 12:
+                    print ('dados:{}'.format(dados))
+                    print ('Você perdeu a aposta Pass_line_bet...')
+                    fichas -= aposta
+                else: 
+                    print('dados:{}'.format(dados))
+                    rodada= 'Fase: Point'
+                    
+                    while (rodada == 'Fase: Point'):
+                         print (rodada)
+                         print('point:{}'.fotmat(dados))
+                         print ("fichas:{}".format(fichas))
+                         d1=(randint(1,6))
+                         d2=(randint(1,6))
+                         dt= d1+ d2
+                         aposta_extra = input('Deseja fazer uma aposta adicional? (Field/Anycraps/Twlve/Não):')
+                         print('dados:{}'.format(dt))
+                         if 'Field' in aposta_extra:
+                             aposta_extra_Field = int(input('Quanto você deseja apostar em Field?'))
+                             resultadoF = Field(dt)
+                             if aposta_Field > fichas:
+                                 print('você não tem essa quantidade de fichas.')
+                             else:
+                               if resultadoF > 0:
+                                   print('Você ganhou a aposta Field!')
+                               else:
+                                   print('você perdeu a aposta Field...')
+
+                                   fichas += aposta_Field*resultadoF
+                         if 'Anycraps' in aposta_extra:
+                             aposta_extra_Anycaps = int(input('Quanto você deseja apostar em Anycraps?'))
+                             resultadoA = Anycraps(dt)
+                             if aposta_Anycaps > fichas:
+                                 print('você não tem essa quantidade de fichas.')
+                             else:
+                                 if resultadoA > 0:
+                                   print('Você ganhou a aposta Anycraps!')
+                                 else:
+                                   print('você perdeu a aposta Anycraps...')
+
+                                 fichas += aposta_Anycaps*resultadoA
+
+                         if 'Twelve' in aposta_extra:
+                             aposta_extra_Twelve = int(input('Quanto você deseja apostar em Twelve?'))
+                             resultadoT = Twelve(dt)
+                             if aposta_Twelve > fichas:
+                                 print('você não tem essa quantidade de fichas.')
+                             else:
+                                 if resultadoT > 0:
+                                     print('Você ganhou a aposta Twelve!')
+                                 else:
+                                     print('você perdeu a aposta Twelve...')
+
+                                 fichas += aposta_Twelve*resultadoT
+
+                         else:
+                             if dt == 7:
+                                 fichas -= aposta
+                                 print ("Você perdeu a aposta...")
+                                 rodada= 'Fase:Come out'
+                             elif dt == dados:
+                                 rodada= 'Fase:Come out'
+                                 fichas += aposta
+                                 print ('Você ganhou a aposta!')
+                             else:
+                                 print ('Jogar novamente.')
+
         
         if fichas <= 0:
             print('Você ficou sem fichas.')   
