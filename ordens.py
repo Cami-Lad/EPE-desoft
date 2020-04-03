@@ -10,7 +10,7 @@ while (fichas!=0):
     
     valor_point= 0
     
-    print (fichas)
+    print ('Você tem {0} fichas' .format (fichas))
     print (rodada)
     
     jogar= input('Você deseja apostar ou sair do jogo ? ')
@@ -26,7 +26,7 @@ while (fichas!=0):
                 print ('Você ganhou a aposta!')
                 fichas += aposta 
             if dados == 2 or dados == 3 or dados == 12:
-                print (dados)
+                print ('A soma dos dados deu :{0}' .format (dados))
                 print ('Você perdeu a aposta')
                 fichas -= aposta
             if dados == 4 or dados == 5 or dados == 6 or dados == 8 or dados == 10:
@@ -38,12 +38,12 @@ while (fichas!=0):
                     d1=(randint(1,6))
                     d2=(randint(1,6))
                     dt= d1+ d2
-                    print (dt)
+                    print ('Dado deu: {0}' .fotmat(dt))
                     if dt == 7:
                         fichas -= aposta
                         print ("Você perdeu a aposta")
                         rodada= 'Fase:Come out'
-                    elif dt == point:
+                    elif dt == valor_point:
                         rodada= 'Fase:Come out'
                         fichas += aposta
                         print ('Você ganhou!')
