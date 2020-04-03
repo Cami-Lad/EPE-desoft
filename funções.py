@@ -101,7 +101,7 @@ while (fichas>0):
                     
                     while (rodada == 'Fase: Point'):
                          print (rodada)
-                         print('point:{}'.fotmat(dados))
+                         print('point:{}'.format(dados))
                          print ("fichas:{}".format(fichas))
                          d1=(randint(1,6))
                          d2=(randint(1,6))
